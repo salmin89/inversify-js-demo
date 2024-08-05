@@ -3,7 +3,6 @@ import { TYPES } from "../types";
 import { type ILogService } from "./LogService";
 
 export interface IConfigService {
-    config: object;
     setConfig(config: object): void;
     getConfig(): any;
     updateHtml(): void;
@@ -11,7 +10,7 @@ export interface IConfigService {
 
 @injectable()
 export class ConfigService implements IConfigService {
-    config: any = {};
+    private config: any = {};
     constructor(
         @inject(TYPES.LogService) private logger: ILogService,
     ) {

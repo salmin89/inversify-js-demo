@@ -38,6 +38,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <fieldset>
       <legend>Feature usage</legend>
       <button id="downlad">Download</button>
+      <button id="upload">Upload</button>
     </fieldset>
   </form>
 `
@@ -50,6 +51,10 @@ container.get<INativeHostService>(TYPES.NativeHostService).tryConnect();
 document.querySelector<HTMLButtonElement>('#downlad')!.addEventListener('click', async () => {
   const file = await container.get<IDownloadService>(TYPES.DownloadService).download()
   container.get<ILogService>(TYPES.LogService).log(file)
+});
+
+document.querySelector<HTMLButtonElement>('#upload')!.addEventListener('click', async () => {
+  await container.get<IUploadService>(TYPES.UploadService).upload()
 });
 
 document.querySelector<HTMLButtonElement>('#toggle')!.addEventListener('click', () => {
